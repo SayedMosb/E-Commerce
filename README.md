@@ -99,6 +99,96 @@ After starting the server, open the Swagger documentation:
 ```text
 http://localhost:4000/api-docs
 ```
+## API Endpoints
+
+The API is organized into multiple modules:
+
+| Module     | Base Route   | Description                                          |
+| ---------- | ------------ | ---------------------------------------------------- |
+| Users      | `/users`     | Authentication and user management                   |
+| Products   | `/products`  | Product management, search, filtering and pagination |
+| Categories | `/category`  | Category management                                  |
+| Cart       | `/cart`      | Shopping cart management                             |
+| Orders     | `/order`     | Order creation and management                        |
+| Reviews    | `/review`    | Product reviews and ratings                          |
+| Wishlist   | `/wishlist`  | Wishlist management                                  |
+| Addresses  | `/address`   | User address management                              |
+| Coupons    | `/coupon`    | Coupon management                                    |
+| Payments   | `/payment`   | Payment-related operations                           |
+| Dashboard  | `/dashboard` | Admin dashboard and statistics                       |
+
+### Authentication
+
+The API uses **JWT Authentication**.
+
+Protected endpoints require an access token in the request header:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+Some endpoints are restricted to administrators using role-based authorization.
+
+### Main User Operations
+
+```text
+POST   /users/signup
+POST   /users/signin
+POST   /users/refresh
+POST   /users/logout
+POST   /users/forgot-password
+POST   /users/reset-password/:token
+PATCH  /users/updateuser/:id
+DELETE /users/deleteuser/:id
+```
+
+### Main Product Operations
+
+```text
+GET    /products
+GET    /products/:id
+POST   /products/addproduct
+PATCH  /products/:id
+DELETE /products/:id
+```
+
+The products endpoint supports:
+
+* Search by product name
+* Price filtering
+* Pagination
+* Price sorting
+
+Example:
+
+```text
+GET /products?search=phone&minPrice=100&maxPrice=1000&page=1&limit=10&sort=price_asc
+```
+
+### Orders
+
+The Orders module provides:
+
+* Create orders
+* Retrieve orders
+* Update orders
+* Delete orders
+* Update order status
+* Stock management
+* Automatic total price calculation
+
+### Other Modules
+
+The project also includes modules for:
+
+* Shopping Cart
+* Categories
+* Reviews & Ratings
+* Wishlist
+* Addresses
+* Coupons
+* Payments
+* Admin Dashboard
 
 Swagger provides an interactive interface for testing and exploring the available API endpoints.
 
