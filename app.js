@@ -38,11 +38,11 @@ const swaggerOptions = {
             description: 'E-Commerce Backend API'
         },
 
-        servers: [
-            {
-                url: 'http://localhost:4000'
-            }
-        ],
+      servers: [
+    {
+        url: process.env.API_URL || 'http://localhost:4000'
+    }
+],
 
         components: {
             securitySchemes: {
